@@ -20,7 +20,8 @@ const originalObject = {
     phoneNumbers: new Map([
       ['home', dummyObject],
       ['work', dummyObject]
-    ])
+    ]),
+    reg : new RegExp('test', 'g')
   };
 
 const clonedObject = deepClone(originalObject);
@@ -55,5 +56,9 @@ test('Object Set test', () => {
 
 test('Object Map test', () => {
     expect(clonedObject.phoneNumbers.get('home') === originalObject.phoneNumbers.get('home')).toBe(false);
+})
+
+test ('Object RegExp test', () => {
+    expect(clonedObject.reg === originalObject.reg).toBe(false);
 })
   

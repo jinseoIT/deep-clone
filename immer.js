@@ -6,6 +6,10 @@ function deepClone(obj) {
     if (obj instanceof Date) {
       return new Date(obj); // Date 객체 복사
     }
+
+    if (obj instanceof RegExp) { // RegExp 객체 복사
+      return new RegExp(obj);
+    }
   
     if (obj instanceof Map) {
       const clonedMap = new Map();
