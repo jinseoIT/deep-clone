@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1694794269024" clover="3.2.0">
-  <project timestamp="1694794269024" name="All files">
+<coverage generated="1694795138708" clover="3.2.0">
+  <project timestamp="1694795138708" name="All files">
     <metrics statements="21" coveredstatements="21" conditionals="14" coveredconditionals="13" methods="4" coveredmethods="4" elements="39" coveredelements="38" complexity="0" loc="21" ncloc="21" packages="1" files="1" classes="1"/>
     <file name="immer.js" path="/Users/macbook/Desktop/public/f-lab/clone/immer.js">
       <metrics statements="21" coveredstatements="21" conditionals="14" coveredconditionals="13" methods="4" coveredmethods="4"/>

@@ -1,4 +1,4 @@
-export function deepClone(obj) {
+function deepClone(obj) {
     if (obj === null || typeof obj !== 'object') {
       return obj; // 기본 자료형이나 null인 경우 그대로 반환
     }
@@ -35,3 +35,5 @@ export function deepClone(obj) {
     }
     return clonedObj;
   }
+
+export default deepClone

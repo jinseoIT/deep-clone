@@ -1,4 +1,4 @@
-import {deepClone} from './immer'
+import deepClone from './immer'
 
 const dummyObject = {
     name : 'hi',
