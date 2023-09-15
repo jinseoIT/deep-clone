@@ -49,11 +49,11 @@ test('Object Date test', () => {
     expect(clonedObject.birthDate === originalObject.birthDate).toBe(false);
 })
 
-test('Object Date Set', () => {
+test('Object Set test', () => {
     expect(clonedObject.favoriteColors === originalObject.favoriteColors).toBe(false);
 })
 
-test('Object Date Map', () => {
+test('Object Map test', () => {
     expect(clonedObject.phoneNumbers.get('home') === originalObject.phoneNumbers.get('home')).toBe(false);
 })
   
