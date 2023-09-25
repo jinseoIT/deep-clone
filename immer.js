@@ -1,12 +1,9 @@
-// Date 객체 복사
 const copyDate = (data) => {
   return new Date(data);
 }
-// RegExp 객체 복사
 const copyRegExp = (data) => {
   return new RegExp(data);
 }
-// Map 객체 복사
 const copyMap = (data) => {
   const clonedMap = new Map();
   data.forEach((value, key) => {
@@ -14,7 +11,6 @@ const copyMap = (data) => {
   });
   return clonedMap;
 }
-// WeakMap 객체 복사
 const copyWeakMap = (data) => {
   const clonedWeakMap = new WeakMap();
   for(const [key, value] in data) {
@@ -22,7 +18,6 @@ const copyWeakMap = (data) => {
   }
   return clonedWeakMap
 }
-// Set 객체 복사
 const copySet = (data) => {
   const clonedSet = new Set();
   data.forEach((value) => {
@@ -30,20 +25,19 @@ const copySet = (data) => {
   });
   return clonedSet;
 }
-// WeakSet 객체 복사
 const copyWeakSet = (data) => {
   const clonedWeakSet = new WeakSet();
   for(const [key, value] in data) {
     clonedWeakSet.add(key, value); // 키와 값을 그대로 복사
   }
-  
   return clonedWeakSet;
 }
-// Symbol 복사
+const copyArray = (data) => {
+  return data.map(v=> deepClone(v));
+}
 const copySymbol = (originSymbol) => {
   return Symbol(originSymbol.description);
 }
-// 객체 속성 복사
 const copyObject = (data) => {
   const clonedObj = {};
   for (const key in data) {
@@ -54,6 +48,16 @@ const copyObject = (data) => {
   return clonedObj;
 }
 
+const typeMap = new Map([
+ [Date, copyDate],
+ [RegExp, copyRegExp],
+ [Map, copyMap],
+ [WeakMap, copyWeakMap],
+ [Set, copySet],
+ [WeakSet, copyWeakSet],
+ [Array, copyArray]
+]);
+
 function deepClone(obj) {
     if (obj === null || typeof obj !== 'object') {
       if(typeof obj === 'symbol'){
@@ -62,34 +66,12 @@ function deepClone(obj) {
       return obj; // 기본 자료형이나 null인 경우 그대로 반환
     }
   
-    if (obj instanceof Date) {
-      return copyDate(obj); // Date 객체 복사
-    }
-
-    if (obj instanceof RegExp) { 
-      return copyRegExp(obj); // RegExp 객체 복사
-    }
-  
-    if (obj instanceof Map) {
-      return copyMap(obj); // Map 객체 복사
+    for(const [type, copyFn] of typeMap){
+      if(obj instanceof type){
+        return copyFn(obj);
+      }
     }
     
-    if (obj instanceof WeakMap) {
-      return copyWeakMap(obj); // WeakMap 객체 복사
-    } 
-  
-    if (obj instanceof Set) {
-      return copySet(obj); // Set 객체 복사
-    }
-
-    if (obj instanceof WeakSet) {
-      return copyWeakSet(obj); // WeakSet 객체 복사
-    }
-  
-    if (Array.isArray(obj)) {
-      return obj.map(v=> deepClone(v));
-    }
-
     return copyObject(obj); // 객체 속성 복사
   }
 
